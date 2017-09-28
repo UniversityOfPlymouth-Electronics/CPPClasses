@@ -10,5 +10,11 @@
 #define Human_hpp
 
 #include <stdio.h>
+Class Human {
+    unsigned int age;
+    float weight;
+    float height;
+    float bmi;
+};
 
 #endif /* Human_hpp */
