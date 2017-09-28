@@ -7,29 +7,27 @@
 //
 
 #include <iostream>
-#incude "Human.hpp"
-
+#include "CHuman.hpp"
+using namespace std;
 int main(int argc, const char * argv[]) {
+    
     //This looks the same?
-    Human person1(35, 80.0, 1.81);
+    CHuman person1(35, 80.0, 1.81);
     
     //Display
-    printf("Weight: %f, Height: %f, BodyMassIndex: %f", person1.weight, person1.height, person1.bmi);
-    //Print a * for a BMI greater than 25
-    if (person1.bmi > 25.0) {
-        printf("*\n");
-    } else {
-        printf("\n");
-    }
+    person1.display();
     
     //Designated initialiser
-    Human person2 = Human(45, 97.0, 1.6);
-    printf("Weight: %f, Height: %f, BodyMassIndex: %f", person2.weight, person2.height, person2.bmi);
-    if (person2.bmi > 25.0) {
-        printf("*\n");
-    } else {
-        printf("\n");
-    }
+    CHuman person2 = CHuman(45, 97.0, 1.6);
+    person2.display();
+    cout << "Cut out the beer" << endl;
+    person2.updateWeight(92.0);
+    person2.display();
     
+    float h2 = person2.height();
+    cout << h2 << endl;
+    
+    //Try this
+    //person2._height = 0.0;
     return 0;
 }
