@@ -12,16 +12,12 @@ CHuman::CHuman(int age, float weight, float height) {
     this->_age = age;
     this->_weight = weight;
     this->_height = height;
-    updateBMI();
-}
-
-void CHuman::updateBMI() {
-    this->_bmi = this->_weight / (this->_height * this->_height);
+    this->_needsUpdate = true;
 }
 
 void CHuman::display() {
-    printf("Weight: %f, Height: %f, BodyMassIndex: %f", _weight, _height, _bmi);
-    if (_bmi > 25.0) {
+    printf("Weight: %f, Height: %f, BodyMassIndex: %f", _weight, _height, this->bmi());
+    if (this->bmi() > 25.0) {          //ALWAYS USE THE ACCESSOR
         printf("*\n");
     } else {
         printf("\n");
@@ -35,22 +31,26 @@ float CHuman::weight() {
 float CHuman::height() {
     return _height;
 }
-float CHuman::bmi() {
-    return _bmi;
+inline float CHuman::bmi() {
+    if (this->_needsUpdate == true) {
+        this->_bmi = this->_weight / (this->_height * this->_height);   //Assuming this is expensive
+        this->_needsUpdate = false; //Flag that the bmi is up to date
+    }
+    return this->_bmi;
 }
 
 //Update the weight and hight
 float CHuman::updateWeight(double w) {
     float temp = _weight;
     _weight = w;
-    updateBMI();
+    this->_needsUpdate = true;      //Flag that _bmi is out of date
     return temp;
 }
 
 float CHuman::updateHeight(double h) {
     float temp = _height;
     _height = h;
-    updateBMI();
+    this->_needsUpdate = true;      //Flag that _bmi is out of date
     return temp;
 }
 

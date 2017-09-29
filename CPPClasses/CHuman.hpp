@@ -19,6 +19,7 @@ private:
     float _weight;
     float _height;
     float _bmi;
+    bool _needsUpdate;
     
 public:
     CHuman(int age, float weight, float height);
@@ -33,7 +34,6 @@ public:
     
 private:
     //Private member function (aka "method")
-    void updateBMI();
 };
 
 #endif /* Human_hpp */
