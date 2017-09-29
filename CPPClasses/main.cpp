@@ -18,12 +18,15 @@ int main(int argc, const char * argv[]) {
     person1.display();
     
     //Designated initialiser
-    CHuman person2 = CHuman(45, 97.0, 1.6);
+    CHuman person2 = CHuman(45, 97.0, 1.9);
     person2.display();
     cout << "Cut out the beer" << endl;
-    person2.updateWeight(92.0);
+    
+    //Update
+    person2.updateWeight(85.0);
     person2.display();
     
+    //Accessor
     float h2 = person2.height();
     cout << h2 << endl;
     
