@@ -51,6 +51,12 @@ float CHuman::updateHeight(double h) {
     return temp;
 }
 
+// Allow cout to display
+std::ostream& operator << (std::ostream& os, CHuman& h)
+{
+    os << h.bmi();
+    return os; //allows chaining
+}
 
 
 

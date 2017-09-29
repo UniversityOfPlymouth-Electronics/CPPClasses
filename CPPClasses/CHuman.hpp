@@ -10,6 +10,7 @@
 #define Human_hpp
 
 #include <stdio.h>
+#include <iostream>
 
 class CHuman {
     
@@ -31,7 +32,8 @@ public:
     //Write accessors
     float updateWeight(double);
     float updateHeight(double);
-    
+    friend std::ostream& operator << (std::ostream& os, CHuman& h);
+
 private:
     //Private member function (aka "method")
 };
